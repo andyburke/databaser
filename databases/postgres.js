@@ -193,7 +193,8 @@ module.exports = {
 			deserializers: {},
 			column_name: ( path ) => ( path.join( '__' ) ),
 			primary_key: null,
-			concurrent_indexing: false
+			concurrent_indexing: false,
+			max: process.env.POSTGRES_MAX_CLIENTS || 50
 		}, _options );
 
 		if ( !options.primary_key ) {
