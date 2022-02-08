@@ -1,6 +1,6 @@
 {
   "name": "databaser",
-  "version": "7.9.2",
+  "version": "7.9.3",
   "description": "database thing",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,15 @@
   "author": "Andy Burke <andy.burke@mailbox.earth>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.3.0",
+    "eslint": "^8.8.0",
     "plaintest": "^0.1.0",
     "require-all": "^3.0.0",
     "tap-spec": "^5.0.0"
   },
   "dependencies": {
-    "date-fns": "^2.27.0",
+    "date-fns": "^2.28.0",
     "deepmerge": "^4.2.2",
-    "pg": "^8.7.1",
+    "pg": "^8.7.3",
     "pluralize": "^8.0.0",
     "traverse": "^0.6.6",
     "uuid": "^8.3.2"

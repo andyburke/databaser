@@ -284,26 +284,33 @@ module.exports = {
 
 				this._initializing = true;
 
-				const query = this._create_table_sql();
+				try {
+					const query = this._create_table_sql();
 
-				if ( options.debug ) {
-					console.log( query );
-				}
-
-				const pool = await this._pool.get();
-				await pool.query( query );
-
-				const index_queries = this._index_sql_queries();
-				for ( const index_query of index_queries ) {
 					if ( options.debug ) {
-						console.log( index_query );
+						console.log( query );
 					}
 
-					await pool.query( index_query );
-				}
+					const pool = await this._pool.get();
+					await pool.query( query );
 
-				this._initialized = true;
-				this._initializing = false;
+					const index_queries = this._index_sql_queries();
+					for ( const index_query of index_queries ) {
+						if ( options.debug ) {
+							console.log( index_query );
+						}
+
+						await pool.query( index_query );
+					}
+
+					this._initialized = true;
+				}
+				catch ( ex ) {
+					console.error( ex.toString() );
+				}
+				finally {
+					this._initializing = false;
+				}
 			},
 
 			_serialize: async function( object ) {
